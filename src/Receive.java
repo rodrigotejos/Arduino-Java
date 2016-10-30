@@ -16,6 +16,9 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.awt.Dimension;
 import java.awt.Panel;
+import java.io.ByteArrayOutputStream;
+import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -54,6 +57,13 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
     int forca11=0,forca21=0,forca31=0,forca41=0;
     int forca12=0,forca22=0,forca32=0,forca42=0;
     int forca13=0,forca23=0,forca33=0,forca43=0;
+    int forca14=0,forca24=0,forca34=0,forca44=0;
+    int forca15=0,forca25=0,forca35=0,forca45=0;
+    int forca16=0,forca26=0,forca36=0,forca46=0;
+    int forca17=0,forca27=0,forca37=0,forca47=0;
+    int forca18=0,forca28=0,forca38=0,forca48=0;
+    int forca19=0,forca29=0,forca39=0,forca49=0;
+    int forca110=0,forca210=0,forca310=0,forca410=0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +93,12 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
         panel2 = new java.awt.Panel();
         panel3 = new java.awt.Panel();
         panel4 = new java.awt.Panel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jTextField12 = new javax.swing.JTextField();
@@ -96,6 +112,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
         panel9 = new java.awt.Panel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jButton1.setText("Portas Disponiveis");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,27 +144,25 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField5)
+                .addGap(14, 14, 14))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(487, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(281, 281, 281)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(524, 524, 524)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,20 +172,20 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(189, 189, 189)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Configurações", jPanel1);
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Calcular");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -189,68 +204,94 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
         panel3.setLayout(panel3Layout);
         panel3Layout.setHorizontalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         panel3Layout.setVerticalGroup(
             panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
         panel4.setLayout(panel4Layout);
         panel4Layout.setHorizontalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         panel4Layout.setVerticalGroup(
             panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
+            .addGap(0, 297, Short.MAX_VALUE)
         );
+
+        jLabel2.setText("Força 1:");
+
+        jLabel3.setText("Força 2:");
+
+        jLabel4.setText("Força 3:");
+
+        jLabel5.setText("Força 4:");
+
+        jLabel6.setText("Tempo :");
+
+        jTextField2.setText("jTextField2");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField6)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
-                .addGap(47, 47, 47)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(160, 160, 160)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)
+                                .addComponent(jLabel5))
+                            .addComponent(jLabel4))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField6)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(jTextField2))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -258,30 +299,43 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                            .addComponent(jTextField6)))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(22, 22, 22)
-                            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(22, 22, 22)
-                            .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addComponent(jLabel6))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Pulo", jPanel4);
@@ -315,7 +369,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField12)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 752, Short.MAX_VALUE)
                 .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -329,7 +383,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Matriz", jPanel5);
@@ -373,7 +427,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
         );
         panel8Layout.setVerticalGroup(
             panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 131, Short.MAX_VALUE)
+            .addGap(0, 439, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel9Layout = new javax.swing.GroupLayout(panel9);
@@ -396,7 +450,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField13)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 765, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -434,8 +488,8 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 24, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1256, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,6 +545,7 @@ System.out.println("portas"+r[i]);
         // TODO add your handling code here:
        // while(true){
         // converte int para string
+        //while(true){
         String f1 = Integer.toString(forca1);
         String f2 = Integer.toString(forca2);
         String f3 = Integer.toString(forca3);
@@ -505,27 +560,76 @@ System.out.println("portas"+r[i]);
         //adicona valores no grafico
         if(n == 1){
             set1(forca1,forca2,forca3,forca4);
-        createGraphic(panel1,forca1,forca12,forca13,"Força 1","MV","N");
-        createGraphic(panel2,forca2,forca22,forca23,"Força 2","MV","N");
-        createGraphic(panel3,forca3,forca32,forca33,"Força 3","MV","N");
-        createGraphic(panel4,forca4,forca42,forca43,"Força 4","MV","N");
+        createGraphic(panel1,forca1,forca12,forca13,forca14,forca15,forca16,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca2,forca22,forca23,forca24,forca25,forca26,forca27,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca3,forca32,forca33,forca34,forca35,forca36,forca37,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca4,forca42,forca43,forca44,forca45,forca46,forca47,forca48,forca49,forca410,"Força 4","MV","N");
             n=2;
         }else if(n ==2){
             set2(forca1,forca2,forca3,forca4);
-        createGraphic(panel1,forca11,forca1,forca13,"Força 1","MV","N");
-        createGraphic(panel2,forca21,forca2,forca23,"Força 2","MV","N");
-        createGraphic(panel3,forca31,forca3,forca33,"Força 3","MV","N");
-        createGraphic(panel4,forca41,forca4,forca43,"Força 4","MV","N");
+        createGraphic(panel1,forca11,forca1,forca13,forca14,forca15,forca16,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca2,forca23,forca24,forca25,forca26,forca27,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca3,forca33,forca34,forca35,forca36,forca37,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca4,forca43,forca44,forca45,forca46,forca47,forca48,forca49,forca410,"Força 4","MV","N");
         n=3;
         }else if(n ==3){
             set3(forca1,forca2,forca3,forca4);
-        createGraphic(panel1,forca11,forca12,forca1,"Força 1","MV","N");
-        createGraphic(panel2,forca21,forca42,forca2,"Força 2","MV","N");
-        createGraphic(panel3,forca31,forca42,forca3,"Força 3","MV","N");
-        createGraphic(panel4,forca41,forca42,forca4,"Força 4","MV","N");
+        createGraphic(panel1,forca11,forca12,forca1,forca14,forca15,forca16,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca2,forca24,forca25,forca26,forca27,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca3,forca34,forca35,forca36,forca37,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca4,forca44,forca45,forca46,forca47,forca48,forca49,forca410,"Força 4","MV","N");
+        n=4;
+        }else if(n ==4){
+            set4(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca1,forca15,forca16,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca2,forca25,forca26,forca27,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca3,forca35,forca36,forca37,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca4,forca45,forca46,forca47,forca48,forca49,forca410,"Força 4","MV","N");
+        n=5;
+        }else if(n ==5){
+            set5(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca14,forca1,forca16,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca24,forca2,forca26,forca27,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca34,forca3,forca36,forca37,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca44,forca4,forca46,forca47,forca48,forca49,forca410,"Força 4","MV","N");
+        n=6;
+        }else if(n ==6){
+            set6(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca14,forca15,forca1,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca24,forca25,forca2,forca27,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca34,forca35,forca3,forca37,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca44,forca45,forca4,forca47,forca48,forca49,forca410,"Força 4","MV","N");
+        n=7;
+        }else if(n ==7){
+            set7(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca14,forca15,forca16,forca1,forca18,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca24,forca25,forca26,forca2,forca28,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca34,forca35,forca36,forca3,forca38,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca44,forca45,forca46,forca4,forca48,forca49,forca410,"Força 4","MV","N");
+        n=8;
+        }else if(n ==8){
+            set8(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca14,forca15,forca16,forca17,forca1,forca19,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca24,forca25,forca26,forca27,forca2,forca29,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca34,forca35,forca36,forca37,forca3,forca39,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca44,forca45,forca46,forca47,forca4,forca49,forca410,"Força 4","MV","N");
+        n=9;
+        }else if(n ==9){
+            set9(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca14,forca15,forca16,forca17,forca18,forca1,forca110,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca24,forca25,forca26,forca27,forca28,forca2,forca210,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca34,forca35,forca36,forca37,forca38,forca3,forca310,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca44,forca45,forca46,forca47,forca48,forca4,forca410,"Força 4","MV","N");
+        n=10;
+        }else if(n ==10){
+            set10(forca1,forca2,forca3,forca4);
+        createGraphic(panel1,forca11,forca12,forca13,forca14,forca15,forca16,forca17,forca18,forca19,forca1,"Força 1","MV","N");
+        createGraphic(panel2,forca21,forca42,forca23,forca24,forca25,forca26,forca27,forca28,forca29,forca2,"Força 2","MV","N");
+        createGraphic(panel3,forca31,forca42,forca33,forca34,forca35,forca36,forca37,forca38,forca39,forca3,"Força 3","MV","N");
+        createGraphic(panel4,forca41,forca42,forca43,forca44,forca45,forca46,forca47,forca48,forca49,forca4,"Força 4","MV","N");
         n=1;
         }
-     //   }
+       // }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -548,27 +652,69 @@ System.out.println("portas"+r[i]);
         forca33 = c;
         forca43 = d;
     }
+    public void set4(int a,int b,int c, int d){
+        forca14 = a;
+        forca24 = b;
+        forca34 = c;
+        forca44 = d;
+    }
+    public void set5(int a,int b,int c, int d){
+        forca15 = a;
+        forca25 = b;
+        forca35 = c;
+        forca45 = d;
+    }
+    public void set6(int a,int b,int c, int d){
+        forca16 = a;
+        forca26 = b;
+        forca36 = c;
+        forca46 = d;
+    }
+    public void set7(int a,int b,int c, int d){
+        forca17 = a;
+        forca27 = b;
+        forca37 = c;
+        forca47 = d;
+    }
+    public void set8(int a,int b,int c, int d){
+        forca18 = a;
+        forca28 = b;
+        forca38 = c;
+        forca48 = d;
+    }
+    public void set9(int a,int b,int c, int d){
+        forca19 = a;
+        forca29 = b;
+        forca39 = c;
+        forca49 = d;
+    }
+    public void set10(int a,int b,int c, int d){
+        forca110 = a;
+        forca210 = b;
+        forca310 = c;
+        forca410 = d;
+    }
     
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         
-        createGraphic(panel5,1,2,3,"Força 1","MV","N");
-        jTextField12.setText("");
+       /* createGraphic(panel5,1,2,3,"Força 1","MV","N");
+        jTextField12.setText("");*/
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
         
-        createGraphic(panel6,1,2,3,"Força 1","MV","N");
+       /* createGraphic(panel6,1,2,3,"Força 1","MV","N");
         
         createGraphic(panel7,1,2,3,"Força 2","MV","N");
         
         createGraphic(panel8,1,2,3,"Força 3","MV","N");
         
         createGraphic(panel9,1,2,3,"Força 4","MV","N");
-       jTextField13.setText("");
+       jTextField13.setText("");*/
     }//GEN-LAST:event_jButton5ActionPerformed
 
    // public String convert (){
@@ -643,7 +789,7 @@ System.out.println("portas"+r[i]);
                     }
                     serialPort.notifyOnDataAvailable(true);
                     try {
-                        serialPort.setSerialPortParams(250000,
+                        serialPort.setSerialPortParams(115200,
                                 SerialPort.DATABITS_8,
                                 SerialPort.STOPBITS_1,
                                 SerialPort.PARITY_NONE);
@@ -670,10 +816,10 @@ System.out.println("portas"+r[i]);
     }
 
     public void serialEvent(SerialPortEvent event) {
-        new Thread() {
+      //  new Thread() {
 			
-			@Override
-			public void run() {
+		//	@Override
+		//	public void run() {
         switch (event.getEventType()) {
             case SerialPortEvent.BI:
             case SerialPortEvent.OE:
@@ -688,16 +834,79 @@ System.out.println("portas"+r[i]);
             case SerialPortEvent.DATA_AVAILABLE:
                 byte[] readBuffer = new byte[8];
                 
+
                 
+                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
                 try {
                     while (inputStream.available() > 0) {
                         //int numBytes = inputStream.read(readBuffer);
+                        
+                        // read stream data into buffer
                         inputStream.read(readBuffer);
+
                     }
-                    for (int k =0  ;k<=8;k++){
-                    int a = (int)readBuffer[k];
- System.out.println("valor do byte "+a);
-                }
+                    /*buffer.write(readBuffer);
+                    System.out.println("SAIU");
+                    byte[] byteArray2 = buffer.toByteArray();
+                    System.out.println("HOW DOES OUR ARRAY LOOKS LIKE");
+                    System.out.println(byteArray2);*/
+                    
+                    
+                    
+                    for (int k =0  ;k < readBuffer.length; k+=2){
+                        System.out.println("VALOR DE K NO FOR ---->" + k);
+                        byte a = (byte)readBuffer[k];
+                        System.out.println("valor do byte A --->" + a);
+                        int valorDeK = k + 1;
+                        byte b = (byte)readBuffer[valorDeK];
+                        System.out.println("valor do byte B --->" + b);
+                        String intNovo = Integer.toString(a, 2);
+                        String intNovo2 = Integer.toString(b, 2);
+                        byte[] novo = intNovo.getBytes();
+                        System.out.println("ARRAY DE BYTE NOVO");
+                        System.out.println(novo);
+                        byte[] novo2 = intNovo2.getBytes();
+                        System.out.println("NOVO E ACHO QUE FINAL");
+                        //byte[] c = new byte[novo + novo2];
+                        
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
+                        outputStream.write( novo );
+                        outputStream.write( novo2 );
+                        System.out.println("BYTE ARRAY OUTPUT");
+                        System.out.println(outputStream);
+                        String oiOi = outputStream.toString();
+                        System.out.println(oiOi);
+                        int decimalValue = Integer.parseInt(outputStream.toString(), 2);
+                        System.out.println(decimalValue);
+                        if(k == 0){
+                        setValue(decimalValue,forca2,forca3,forca4);
+                        }else if(k == 2){
+                        setValue(forca1,decimalValue,forca3,forca4);
+                        }else if (k == 4){
+                         setValue(forca1,forca2,decimalValue,forca4);   
+                        }else if (k==6){
+                            setValue(forca1,forca2,forca3,decimalValue);
+                        }
+                        
+                        System.out.println("FIIIIIM");
+                        byte c[] = outputStream.toByteArray();
+                        System.out.println("NOVO E ACHO QUE FINAL");
+                        int i = new BigInteger(c).intValue(); 
+                        System.out.println("AGORAAA");
+                        System.out.println(i);
+                        
+                        
+                        /*ByteArrayOutputStream novoByte = new ByteArrayOutputStream();
+
+                        novoByte.write(a);
+                        novoByte.write(b);
+
+                        System.out.println("NOSSO LINDO E GOSTOSO BYTE FINAL");
+                        System.out.println(Arrays.toString(novoByte.toByteArray()));
+                        System.out.println(novoByte.toString());*/
+                    }
+
                     //
                     //char c = y.charAt(0);
                    // char c = y.charAt(0);
@@ -726,9 +935,16 @@ System.out.println("portas"+r[i]);
                 break;
         }
         
-        	}
-		}.start();
+        	//}
+		//}.start();
     }
+    public int toInt( byte[] bytes ) {
+        int result = 0;
+        for (int i=0; i<4; i++) {
+          result = ( result << 8 ) - Byte.MIN_VALUE + (int) bytes[i];
+        }
+        return result;
+      }
 
     public void setValue(int a,int b,int c,int d){
         forca1 = a;
@@ -753,6 +969,7 @@ System.out.println("portas"+r[i]);
                     //pega a data atual
                     Date date = new Date();
                     jTextField5.setText( date.toString());
+                   
                     //pega o tempo inicial
                     start = System.currentTimeMillis( );
                     waiting(1);
@@ -776,6 +993,7 @@ System.out.println("portas"+r[i]);
                          System.out.println("Difference is : " + diff);
                         String dif = Long.toString(diff);
                         jTextField1.setText(dif +" ms");
+                         jTextField2.setText(dif +" ms");
                         cont = 0;
                     }
                         
@@ -799,15 +1017,20 @@ System.out.println("portas"+r[i]);
     /*  Função para criação de dados */
     /*********************************/
     /* @return */
-    public static DefaultCategoryDataset createData(int a,int b, int c){
+    public static DefaultCategoryDataset createData(int a,int b, int c,int d,int e,int f,int g,int h,int i, int j){
         // cria o conjunto de dados
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
-        ds.addValue(a, "maximo", "dia 1");
-        ds.addValue(b, "maximo", "dia 2");
-        ds.addValue(c, "maximo", "dia 3");
-        /*ds.addValue(31.5, "maximo", "dia 4");
-        ds.addValue(35.7, "maximo", "dia 5");
-        ds.addValue(42.5, "maximo", "dia 6");*/
+        ds.addValue(a, "Newton", "dia 1");
+        ds.addValue(b, "Newton", "dia 2");
+        ds.addValue(c, "Newton", "dia 3");
+        ds.addValue(d, "Newton", "dia 4");
+        ds.addValue(e, "Newton", "dia 5");
+        ds.addValue(f, "Newton", "dia 6");
+        ds.addValue(g, "Newton", "dia 4");
+        ds.addValue(h, "Newton", "dia 5");
+        ds.addValue(i, "Newton", "dia 6");
+        ds.addValue(j, "Newton", "dia 4");
+        
         return ds; 
     }
     
@@ -815,9 +1038,9 @@ System.out.println("portas"+r[i]);
     /* Criar grafico e adicionar no jframe */
     /**************************************/
     /* @param panel */
-    public static void createGraphic(Panel panel,int a,int b,int c, String Titulo,String X,String Y){
+    public static void createGraphic(Panel panel,int a,int b, int c,int d,int e,int f,int g,int h,int i, int j, String Titulo,String X,String Y){
         
-        DefaultCategoryDataset ds = createData(a,b,c);
+        DefaultCategoryDataset ds = createData(a,b,c,d,e,f,g,h,i,j);
         
         // cria o gráfico
         JFreeChart grafico = ChartFactory.createLineChart(Titulo, X, 
@@ -840,6 +1063,11 @@ System.out.println("portas"+r[i]);
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -852,6 +1080,7 @@ System.out.println("portas"+r[i]);
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;

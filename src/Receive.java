@@ -18,6 +18,7 @@ import java.awt.Dimension;
 import java.awt.Panel;
 import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -54,6 +55,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
     long end , start;
     int forca1,forca2,forca3,forca4;
     int n = 1;
+    
     int forca11=0,forca21=0,forca31=0,forca41=0;
     int forca12=0,forca22=0,forca32=0,forca42=0;
     int forca13=0,forca23=0,forca33=0,forca43=0;
@@ -64,6 +66,8 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
     int forca18=0,forca28=0,forca38=0,forca48=0;
     int forca19=0,forca29=0,forca39=0,forca49=0;
     int forca110=0,forca210=0,forca310=0,forca410=0;
+ 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -813,8 +817,8 @@ System.out.println("portas"+r[i]);
         } catch (InterruptedException e) {
             System.out.println(e);
         }
-    }
-
+    }    
+    
     public void serialEvent(SerialPortEvent event) {
       //  new Thread() {
 			
@@ -835,98 +839,33 @@ System.out.println("portas"+r[i]);
                 byte[] readBuffer = new byte[8];
                 
 
-                
-                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-
+                int b[] = new int[8];
+                int data[] = new int[4];
+                                
                 try {
                     while (inputStream.available() > 0) {
-                        //int numBytes = inputStream.read(readBuffer);
-                        
-                        // read stream data into buffer
                         inputStream.read(readBuffer);
-
-                    }
-                    /*buffer.write(readBuffer);
-                    System.out.println("SAIU");
-                    byte[] byteArray2 = buffer.toByteArray();
-                    System.out.println("HOW DOES OUR ARRAY LOOKS LIKE");
-                    System.out.println(byteArray2);*/
-                    
-                    
-                    
-                    for (int k =0  ;k < readBuffer.length; k+=2){
-                        System.out.println("VALOR DE K NO FOR ---->" + k);
-                        byte a = (byte)readBuffer[k];
-                        System.out.println("valor do byte A --->" + a);
-                        int valorDeK = k + 1;
-                        byte b = (byte)readBuffer[valorDeK];
-                        System.out.println("valor do byte B --->" + b);
-                        String intNovo = Integer.toString(a, 2);
-                        String intNovo2 = Integer.toString(b, 2);
-                        byte[] novo = intNovo.getBytes();
-                        System.out.println("ARRAY DE BYTE NOVO");
-                        System.out.println(novo);
-                        byte[] novo2 = intNovo2.getBytes();
-                        System.out.println("NOVO E ACHO QUE FINAL");
-                        //byte[] c = new byte[novo + novo2];
                         
-                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( );
-                        outputStream.write( novo );
-                        outputStream.write( novo2 );
-                        System.out.println("BYTE ARRAY OUTPUT");
-                        System.out.println(outputStream);
-                        String oiOi = outputStream.toString();
-                        System.out.println(oiOi);
-                        int decimalValue = Integer.parseInt(outputStream.toString(), 2);
-                        System.out.println(decimalValue);
-                        if(k == 0){
-                        setValue(decimalValue,forca2,forca3,forca4);
-                        }else if(k == 2){
-                        setValue(forca1,decimalValue,forca3,forca4);
-                        }else if (k == 4){
-                         setValue(forca1,forca2,decimalValue,forca4);   
-                        }else if (k==6){
-                            setValue(forca1,forca2,forca3,decimalValue);
+                        for(int i = 0;i < 8;i ++){
+                            b[i] = readBuffer[i];
                         }
-                        
-                        System.out.println("FIIIIIM");
-                        byte c[] = outputStream.toByteArray();
-                        System.out.println("NOVO E ACHO QUE FINAL");
-                        int i = new BigInteger(c).intValue(); 
-                        System.out.println("AGORAAA");
-                        System.out.println(i);
-                        
-                        
-                        /*ByteArrayOutputStream novoByte = new ByteArrayOutputStream();
-
-                        novoByte.write(a);
-                        novoByte.write(b);
-
-                        System.out.println("NOSSO LINDO E GOSTOSO BYTE FINAL");
-                        System.out.println(Arrays.toString(novoByte.toByteArray()));
-                        System.out.println(novoByte.toString());*/
+                     
                     }
-
-                    //
-                    //char c = y.charAt(0);
-                   // char c = y.charAt(0);
-                    //System.out.println(inputStream);
-                    String y = new String(readBuffer);
-                    
-                    //int a = Integer.parseInt(y);
-                    
-                     /*   int a = Integer.parseInt(y);
-                        System.out.println(a);
-                        forca2 =2;
-                    forca3 =3;
-                    forca4=4;
-                    setValue(a,forca2,forca3,forca4);*/
-                    diferenca(y);
-                    
-                    
-                    
-                    
-                    
+                        int j =0;
+                     for(int i = 0; i < 8;i+=2){
+                            data[j] = b[i]*256 + b[i+1];
+                            System.out.print(i);
+                            System.out.print(" - ");
+                            System.out.println(data[j]);
+                            j++;
+                     }
+                     
+                     //
+                     //
+                     //pegar o os dados aqui, pela variavel data
+                     //
+                     //
+                     
                 } catch (IOException e) {
                     System.out.println(e);
                 }catch(NumberFormatException ex){ // handle your exception

@@ -56,7 +56,9 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
     int forca1,forca2,forca3,forca4;
     int n = 1;
     
-    int forca11=0,forca21=0,forca31=0,forca41=0;
+	int  forca[10]; 	
+	
+   /* int forca11=0,forca21=0,forca31=0,forca41=0;
     int forca12=0,forca22=0,forca32=0,forca42=0;
     int forca13=0,forca23=0,forca33=0,forca43=0;
     int forca14=0,forca24=0,forca34=0,forca44=0;
@@ -65,7 +67,7 @@ public class Receive extends javax.swing.JFrame implements Runnable, SerialPortE
     int forca17=0,forca27=0,forca37=0,forca47=0;
     int forca18=0,forca28=0,forca38=0,forca48=0;
     int forca19=0,forca29=0,forca39=0,forca49=0;
-    int forca110=0,forca210=0,forca310=0,forca410=0;
+    int forca110=0,forca210=0,forca310=0,forca410=0;*/
  
     
     /**
@@ -562,9 +564,20 @@ System.out.println("portas"+r[i]);
         jTextField11.setText(f4);
         
         //adicona valores no grafico
-        if(n == 1){
+	    
+	  //  for(int i =0;i <forca[][].lenght;i++){
+		    
+		   createGraphic(panel1,forca1[i],"Força 1","MV","N");
+		    createGraphic(panel1,forca2[i],"Força 2","MV","N");
+		    createGraphic(panel1,forca3[i],"Força 3","MV","N");
+		    createGraphic(panel1,forca4[i],"Força 4","MV","N");
+		    
+	  //  }
+	    
+      /*  if(n == 1){
             set1(forca1,forca2,forca3,forca4);
         createGraphic(panel1,forca1,forca12,forca13,forca14,forca15,forca16,forca17,forca18,forca19,forca110,"Força 1","MV","N");
+		createGraphic(panel1,forca[][0],"Força 1","MV","N");
         createGraphic(panel2,forca2,forca22,forca23,forca24,forca25,forca26,forca27,forca28,forca29,forca210,"Força 2","MV","N");
         createGraphic(panel3,forca3,forca32,forca33,forca34,forca35,forca36,forca37,forca38,forca39,forca310,"Força 3","MV","N");
         createGraphic(panel4,forca4,forca42,forca43,forca44,forca45,forca46,forca47,forca48,forca49,forca410,"Força 4","MV","N");
@@ -632,13 +645,13 @@ System.out.println("portas"+r[i]);
         createGraphic(panel3,forca31,forca42,forca33,forca34,forca35,forca36,forca37,forca38,forca39,forca3,"Força 3","MV","N");
         createGraphic(panel4,forca41,forca42,forca43,forca44,forca45,forca46,forca47,forca48,forca49,forca4,"Força 4","MV","N");
         n=1;
-        }
+        }*/
        // }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-    public void set1(int a,int b,int c, int d){
+   /* public void set1(int a,int b,int c, int d){
         forca11 = a;
         forca21 = b;
         forca31 = c;
@@ -697,7 +710,7 @@ System.out.println("portas"+r[i]);
         forca210 = b;
         forca310 = c;
         forca410 = d;
-    }
+    }*/
     
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -818,7 +831,7 @@ System.out.println("portas"+r[i]);
             System.out.println(e);
         }
     }    
-    
+    int k =0;
     public void serialEvent(SerialPortEvent event) {
       //  new Thread() {
 			
@@ -865,6 +878,17 @@ System.out.println("portas"+r[i]);
                      //pegar o os dados aqui, pela variavel data
                      //
                      //
+			for(int i = 0;i<4;i++){
+				forca1[k] = data[i]
+				forca2[k] = data[i]
+				forca3[k] = data[i]
+				forca4[k] = data[i]
+				setValue(forca1[k],forca2[k],forca3[k],forca4[k])
+			}
+			k++
+				if(k==MAXR){
+					k=0;
+				}
                      
                 } catch (IOException e) {
                     System.out.println(e);
@@ -884,7 +908,8 @@ System.out.println("portas"+r[i]);
         }
         return result;
       }
-
+	
+// set para guardar valor para mostar na caixa de texto
     public void setValue(int a,int b,int c,int d){
         forca1 = a;
         forca2 = b;
@@ -956,10 +981,11 @@ System.out.println("portas"+r[i]);
     /*  Função para criação de dados */
     /*********************************/
     /* @return */
-    public static DefaultCategoryDataset createData(int a,int b, int c,int d,int e,int f,int g,int h,int i, int j){
+   // public static DefaultCategoryDataset createData(int a,int b, int c,int d,int e,int f,int g,int h,int i, int j){
+	public static DefaultCategoryDataset createData(int forcaG[]){
         // cria o conjunto de dados
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
-        ds.addValue(a, "Newton", "dia 1");
+      /*  ds.addValue(a, "Newton", "dia 1");
         ds.addValue(b, "Newton", "dia 2");
         ds.addValue(c, "Newton", "dia 3");
         ds.addValue(d, "Newton", "dia 4");
@@ -968,8 +994,14 @@ System.out.println("portas"+r[i]);
         ds.addValue(g, "Newton", "dia 4");
         ds.addValue(h, "Newton", "dia 5");
         ds.addValue(i, "Newton", "dia 6");
-        ds.addValue(j, "Newton", "dia 4");
-        
+        ds.addValue(j, "Newton", "dia 4");*/
+		
+
+        		
+			for(int u = 0;u<4;u++ )}
+	    ds.addValue(forcaG[u], "Newton", u);
+		}
+
         return ds; 
     }
     
@@ -977,9 +1009,10 @@ System.out.println("portas"+r[i]);
     /* Criar grafico e adicionar no jframe */
     /**************************************/
     /* @param panel */
-    public static void createGraphic(Panel panel,int a,int b, int c,int d,int e,int f,int g,int h,int i, int j, String Titulo,String X,String Y){
-        
-        DefaultCategoryDataset ds = createData(a,b,c,d,e,f,g,h,i,j);
+   // public static void createGraphic(Panel panel,int a,int b, int c,int d,int e,int f,int g,int h,int i, int j, String Titulo,String X,String Y){
+        public static void createGraphic(Panel panel,int forcaG[], String Titulo,String X,String Y){
+       // DefaultCategoryDataset ds = createData(forca);
+		DefaultCategoryDataset ds = createData(forcaG[]);
         
         // cria o gráfico
         JFreeChart grafico = ChartFactory.createLineChart(Titulo, X, 
